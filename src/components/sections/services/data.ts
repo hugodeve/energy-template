@@ -1,59 +1,59 @@
-import img1 from "./assets/solar3.png";
-import img2 from "./assets/wind.png";
+import img1 from "./assets/solar3.webp";
+import img2 from "./assets/wind.webp";
 // TODO
-import img3 from "./assets/hydro.png";
-import img4 from "./assets/storage.png";
+import img3 from "./assets/hydro.webp";
+import img4 from "./assets/storage.webp";
 // TODO
-import img5 from "./assets/smart-grid.png";
-import img6 from "./assets/green.png";
+import img5 from "./assets/smart-grid.webp";
+import img6 from "./assets/green.webp";
 
 export const servicesSectionData = {
-  title: "Our Sustainable Energy Solutions",
+  title: "Our Home and Industrial Renovation Solutions",
   subheading: {
-    text1_1: "Experience a Revolution in Energy Solutions - ",
-    text1_2: "Embrace Innovation, Embrace Sustainability.",
+    text1_1: "Experience Excellence in Home and Industrial Renovations - ",
+    text1_2: "Embrace Quality, Embrace Transformation.",
     text2:
-      "We're here to Empower Your Life and Spaces with Clean, Renewable Energy, Paving the Way for a Brighter and Greener Tomorrow.",
+      "We're here to Enhance Your Living and Working Spaces with Top-notch Renovation Services, Paving the Way for a More Functional and Aesthetic Future.",
   },
   services: [
     {
-      title: "Solar Power Solutions",
+      title: "Facade Cleaning and Restoration",
       briefDescription:
-        "Harness the power of the sun with our state-of-the-art solar panels. Generate clean energy for your home or business and reduce your carbon footprint.",
+        "Refresh and restore the appearance of your building with our professional facade cleaning services. Ensure a clean and polished look for your home or business.",
       visual: img1,
     },
     {
-      title: "Wind Energy Harvesting",
+      title: "Electrical Installations and Repairs",
       briefDescription:
-        "Embrace the power of the wind. Our wind energy solutions provide a sustainable and efficient way to generate electricity, ensuring a greener future.",
+        "Ensure safe and efficient electrical systems. Our expert electricians handle everything from new installations to repairs, ensuring compliance with safety standards.",
       visual: img2,
     },
     {
-      title: "Hydropower Systems",
+      title: "Painting and Finishing",
       briefDescription:
-        "Flow with nature. Our hydropower systems harness the energy of flowing water, delivering reliable and eco-friendly electricity to your doorstep.",
+        "Give your home or office a fresh look with our professional painting services. We use high-quality paints to deliver a flawless and durable finish.",
       visual: img3,
     },
     {
-      title: "Energy Storage Solutions",
+      title: "Grounding and Electrical Earthing",
       briefDescription:
-        "Store excess energy efficiently. Our cutting-edge energy storage solutions ensure uninterrupted power supply, even during cloudy days or low-wind periods.",
+        "Protect your home and business from electrical hazards. Our grounding services ensure safety by preventing electrical shocks and surges.",
       visual: img4,
     },
     {
-      title: "Smart Grid Technology",
+      title: "Plumbing and Pipe Maintenance",
       briefDescription:
-        "Navigate the future with our smart grid technology. Optimize energy distribution, monitor consumption, and contribute to a more sustainable and efficient energy ecosystem.",
+        "Maintain a seamless water flow in your building. Our plumbing experts offer installation, repair, and maintenance services for homes and industries.",
       visual: img5,
     },
     {
-      title: "Energy-efficient Lighting",
+      title: "Roofing and Waterproofing",
       briefDescription:
-        "Illuminate your space responsibly. Our energy-efficient lighting solutions provide bright, sustainable, and cost-effective illumination for homes and businesses.",
+        "Protect your building from the elements with our roofing and waterproofing solutions. Ensure long-lasting durability and prevent leaks.",
       visual: img6,
     },
   ],
   callToAction:
-    "Discover the Future of Green Energy. Choose Your Sustainable Solution Today!",
-  buttonText: "Explore More",
+    "Discover the Future of Home and Industrial Renovations. Choose Your Solution Today!",
+  buttonText: "Learn More",
 };

@@ -1,32 +1,32 @@
-import imgGrid from "./assets/inno-grid.webp";
-import imgSolar from "./assets/inno-panel.webp";
-import imgWind from "./assets/inno-wind.webp";
+import imgFacade from "./assets/inno-grid.webp";
+import imgElectrical from "./assets/inno-panel.webp";
+import imgPainting from "./assets/inno-wind.webp";
 
 export const innovationsSection = {
-  title: "Latest Innovations",
+  title: "Latest Innovations in Renovations and Maintenance",
   subheading1_1: "Discover Our Cutting-edge",
-  subheading1_2: " Green Energy Technologies",
+  subheading1_2: " Renovation and Maintenance Solutions",
   innovations: [
     {
-      title: "Smart Grid Integration",
+      title: "Facade Cleaning and Restoration",
       description:
-        "Revolutionize energy distribution with our smart grid technology, optimizing efficiency, minimizing wastage, and adapting to demand fluctuations. Stay connected with innovative solutions for a sustainable, cost-effective energy ecosystem. Embrace the future with our cutting-edge smart grid integration, enhancing reliability and paving the way for efficiency and sustainability.",
-      visual: imgGrid,
+        "Rejuvenate the exterior of your building with our advanced facade cleaning technology. Our solutions effectively remove dirt, pollutants, and grime, restoring the beauty of your property while ensuring long-lasting protection. Our innovative techniques offer enhanced results with minimal environmental impact, bringing new life to your facades.",
+      visual: imgFacade,
     },
     {
-      title: "Advanced Solar Panel Design",
+      title: "Advanced Electrical Systems",
       description:
-        "Boost solar efficiency with our state-of-the-art solar panel designs. Our innovative technologies capture more sunlight, ensuring maximum energy production for your home or business. Experience enhanced sustainability and increased energy output with our advanced solar solutions.",
-      visual: imgSolar,
+        "Stay safe and efficient with our cutting-edge electrical installation and repair services. We use the latest tools and technologies to ensure your electrical systems are optimized for performance and safety, while adhering to the highest industry standards. Whether for residential or industrial settings, our solutions offer reliability and sustainability.",
+      visual: imgElectrical,
     },
     {
-      title: "Next-gen Wind Turbines",
+      title: "Next-level Painting and Finishing",
       description:
-        "Transform your wind energy experience with our next-generation wind turbines. Our sleek design, enhanced efficiency, and minimal environmental impact underscore our commitment to innovation. Elevate your sustainable energy journey with cutting-edge wind solutions that prioritize both performance and environmental responsibility.",
-      visual: imgWind,
+        "Transform your spaces with our innovative painting solutions. We use eco-friendly, high-durability paints that provide a fresh look and protect your surfaces for years to come. Our advanced finishing techniques ensure flawless results, whether you're updating a home or an industrial site.",
+      visual: imgPainting,
     },
   ],
-  visual: "innovations-section-image.jpg",
-  callToAction: "Explore the Future of Green Energy with [Company Name]",
+  visual: "renovations-section-image.jpg",
+  callToAction: "Explore the Future of Renovation and Maintenance with [Company Name]",
   button: "Learn More",
 };

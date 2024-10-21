@@ -53,18 +53,18 @@ export default {
           dark: "#000000",
         },
         primary: {
-          50: "#f1fcf1",
-          100: "#e0f9df",
-          200: "#c2f1c1",
-          300: "#92e491",
-          400: "#5acf59",
-          500: "#34b433",
-          DEFAULT: "#228B22",
-          600: "#228b22",
-          700: "#207521",
-          800: "#1e5d1f",
-          900: "#1a4d1b",
-          950: "#092a0b",
+          50: "#e3f8fb",  // very light ocean blue
+          100: "#b8eef5", // lighter ocean blue
+          200: "#85e1ef", // light ocean blue
+          300: "#47cde3", // medium-light ocean blue
+          400: "#1bb6d4", // medium ocean blue
+          500: "#008bb3", // default ocean blue
+          DEFAULT: "#008bb3",  // ocean blue
+          600: "#007d9f",  // slightly darker ocean blue
+          700: "#006a85",  // darker ocean blue
+          800: "#00556a",  // much darker ocean blue
+          900: "#003d4e",  // near dark ocean blue
+          950: "#00222c",  // almost black-ocean blue
         },
         secondary: {
           50: "#edfaff",
