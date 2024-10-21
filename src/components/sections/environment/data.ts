@@ -1,19 +1,19 @@
-import img from "./assets/green-hands.png";
+import img from "./assets/green-hands.webp";
 
 export const environmentalImpactSection = {
-  title: "Environmental Impact",
-  subheading1_1: "Choosing [Company Name] for a",
-  subheading1_2: " Greener Tomorrow",
+  title: "Sustainable Construction",
+  subheading1_1: "Partner with Resolve for",
+  subheading1_2: " Sustainable Renovations",
   description:
-    "At [Company Name], we are committed to making a positive impact on the environment. By choosing our sustainable energy solutions, you contribute to:",
+    "At [Company Name], we are dedicated to implementing eco-friendly practices in home, business, and industrial renovations. By choosing our sustainable construction solutions, you contribute to:",
   impactPoints: [
-    "Reducing Carbon Emissions",
-    "Conserving Natural Resources",
-    "Preserving Biodiversity",
-    "Mitigating Climate Change",
-    "Promoting a Cleaner and Healthier Planet",
+    "Reducing Construction Waste",
+    "Optimizing Energy Efficiency",
+    "Conserving Water and Resources",
+    "Lowering Environmental Footprint",
+    "Creating Healthier Living and Working Spaces",
   ],
   visual: img,
-  callToAction: "Join Us in Building a Sustainable Future",
+  callToAction: "Join Us in Creating Sustainable Spaces",
   button: "Learn More",
 };

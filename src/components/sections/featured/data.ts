@@ -3,9 +3,9 @@ import img2 from "./assets/wind-person.png";
 import img3 from "./assets/amazonas2.png";
 
 export const projectsSection = {
-  title: "Featured Projects",
-  subheading1_1: "Explore Our Successful ",
-  subheading1_2: "Green Energy Endeavors",
+  title: "Featured",
+  subheading1_1: "Why Choose ",
+  subheading1_2: "Resolve",
   projects: [
     {
       title: "Solar-Powered Community",
