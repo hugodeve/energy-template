@@ -9,21 +9,21 @@ export const getInvolvedSection = {
   subheading1_2: "in Building a Sustainable Future",
   initiatives: [
     {
-      title: "Community Outreach",
+      title: "Construction safety",
       description:
-        "Discover our community initiatives aimed at promoting awareness and education on sustainable living. Join us in creating a positive impact together.",
+        "More security for your work and your pocket. Our services are guaranteed by AIG.",
       visual: svg2,
     },
     {
-      title: "Green Events",
+      title: "Reference",
       description:
-        "Participate in our upcoming green events. From tree-planting drives to eco-friendly workshops, be a part of the movement towards a healthier planet.",
+        "Quality, safety and comfort, With 5 years in the market, we have become experts in the sector.",
       visual: svg4,
     },
     {
-      title: "Partnerships for Sustainability",
+      title: "From start to finish",
       description:
-        "Explore our partnerships with organizations dedicated to environmental conservation. Learn how you can contribute to sustainable practices through collaboration.",
+        "We carry out the project and execute the work from the foundation to the delivery of the keys in hand.",
       visual: svg3,
     },
   ],

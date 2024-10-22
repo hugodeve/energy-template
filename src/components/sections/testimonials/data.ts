@@ -3,30 +3,30 @@ import img2 from "./assets/person2.png";
 import img3 from "./assets/person3.png";
 
 export const testimonialsSection = {
-  title: "What Our Customers Say",
-  subheading1_1: "Hear from Those",
-  subheading1_2: " Who Have Embraced Sustainable Living",
+  "title": "What Our Customers Say",
+  "subheading1_1": "Hear from Those",
+  "subheading1_2": " Who Have Trusted Resolve with Their Renovation Projects",
   testimonials: [
     {
       name: "Emily Johnson",
       visual: img1,
       occupation: "Homeowner",
       quote:
-        "Switching to [Company Name] was the best decision I made. Our home is now powered by clean energy, and I feel great knowing I'm contributing to a healthier planet.",
+        "Choosing Resolve for our home renovation was the best decision we made. The transformation is incredible, and the team was professional and attentive to our needs.",
     },
     {
       name: "Carlos Rodriguez",
       visual: img2,
       occupation: "Business Owner",
       quote:
-        "As a business owner, sustainability is crucial. [Company Name] provided us with a seamless transition to green energy, and we've seen a positive impact on both the environment and our operating costs.",
+        "As a business owner, I needed minimal disruption during our office renovation. [Company Name] delivered on time and exceeded our expectations with their quality workmanship..",
     },
     {
       name: "Sophie Chen",
       visual: img3,
       occupation: "Environmental Advocate",
       quote:
-        "I'm passionate about the environment, and [Company Name] aligns perfectly with my values. Their commitment to renewable energy and reducing carbon footprint is commendable.",
+        "Managing multiple properties is challenging, but Resolve made our building renovations seamless and efficient. Their attention to detail is commendable.",
     },
   ],
   visual: "customer-testimonials-image.jpg",
