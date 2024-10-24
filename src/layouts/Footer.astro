@@ -1,107 +1,26 @@
 ---
-import GroupFooterNav from "../components/blocks/GroupFooterNav.astro";
 import Container from "../components/shared/Container.astro";
-import FooterNav from "../components/shared/FooterNav.astro";
 import Paragraph from "../components/shared/Paragraph.astro";
-
-const footerNav1 = [
-  {
-    itemText: "Marketing",
-    itemLink: "#",
-  },
-  {
-    itemText: "Analylitics",
-    itemLink: "#",
-  },
-  {
-    itemText: "Commerce",
-    itemLink: "#",
-  },
-  {
-    itemText: "Insights",
-    itemLink: "#",
-  },
-];
-
-const footerSupport = [
-  {
-    itemText: "Pricing",
-    itemLink: "#",
-  },
-  {
-    itemText: "Guides",
-    itemLink: "#",
-  },
-  {
-    itemText: "FAQ",
-    itemLink: "#",
-  },
-  {
-    itemText: "Contact",
-    itemLink: "#",
-  },
-];
-
-const footerCompany = [
-  {
-    itemText: "About",
-    itemLink: "#",
-  },
-  {
-    itemText: "Blog",
-    itemLink: "#",
-  },
-  {
-    itemText: "Jobs",
-    itemLink: "#",
-  },
-  {
-    itemText: "Parteners",
-    itemLink: "#",
-  },
-  {
-    itemText: "Jobs",
-    itemLink: "#",
-  },
-];
-const footerLegal = [
-  {
-    itemText: "Claim",
-    itemLink: "#",
-  },
-  {
-    itemText: "Privacy",
-    itemLink: "#",
-  },
-  {
-    itemText: "Terms",
-    itemLink: "#",
-  },
-];
 ---
-
 <div class="relative mt-16 bg-base-200 dark:bg-base-dark-800">
   <footer class="relative pt-28 rounded-t-3xl">
-    <Container className="pb-8 relative overflow-auto ">
-      <div
-        class="grid grid-cols-2 lg:grid-cols-3 lg:items-stretch gap-8 relative"
-      >
-        <div class="col-span-2 lg:col-span-1 h-auto flex flex-col">
-          <div class="h-full">
-            <a href="#" class="relative flex items-center gap-3">
-              <div class="inline-flex text-lg font-semibold text-heading-1">
-                Resolve
-              </div>
-            </a>
-            <Paragraph className={"mt-8"}>
-              We work with construction and renovations in the architectural, structural and installation fields.
-            </Paragraph>
+    <Container className="pb-8 relative overflow-auto">
+      <div class="flex flex-col items-center text-center">
+        <!-- Logo o Nombre de la Empresa -->
+        <a href="#" class="flex items-center gap-3">
+          <div class="inline-flex text-lg font-semibold text-heading-1">
+            Resolve
           </div>
-
-          <!-- social links -->
-        <div class="min-h-max flex items-center gap-4 text-heading-3 mt-8">
+        </a>
+        <!-- Descripción Breve -->
+        <Paragraph className="mt-8">
+          We work in construction and renovations in the architectural, structural and installation fields.
+        </Paragraph>
+        <!-- Enlaces a Redes Sociales -->
+        <div class="flex items-center gap-4 text-heading-3 mt-8">
           <!-- LinkedIn -->
           <a href="#" class="transition hover:text-heading-1 hover:scale-105" aria-label="LinkedIn">
+            <!-- SVG de LinkedIn -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -111,7 +30,18 @@ const footerLegal = [
               viewBox="0 0 16 16"
             >
               <path
-                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"
+                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0
+                .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0
+                14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0
+                1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822
+                0-1.359.54-1.359 1.248 0
+                .694.521 1.248 1.327 1.248h.016zm4.908
+                8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878
+                1.232-.878.869 0 1.216.662 1.216
+                1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274
+                0-1.845.7-2.165 1.193v.025h-.016a5.54
+                5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0
+                7.225 0 7.225h2.4z"
               ></path>
             </svg>
             <span class="sr-only">LinkedIn</span>
@@ -119,56 +49,69 @@ const footerLegal = [
 
           <!-- Instagram -->
           <a href="#" class="transition hover:text-heading-1 hover:scale-105" aria-label="Instagram">
+            <!-- SVG de Instagram -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"             
-              height="24"            
-              fill="currentColor"    
-              class="w-6 h-6"        
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="w-6 h-6"
               viewBox="0 0 24 24"
             >
               <path
-                d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.35 3.608 1.325.975.975 1.263 2.242 1.325 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.35 2.633-1.325 3.608-.975.975-2.242 1.263-3.608 1.325-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.35-3.608-1.325-.975-.975-1.263-2.242-1.325-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.35-2.633 1.325-3.608C4.517 2.513 5.784 2.225 7.15 2.163 8.416 2.105 8.796 2.093 12 2.093zm0-2.163C8.741 0 8.332.013 7.052.07 5.775.128 4.603.44 3.678 1.364 2.754 2.289 2.441 3.461 2.383 4.738 2.326 6.018 2.313 6.427 2.313 12c0 5.573.013 5.982.07 7.262.058 1.277.37 2.449 1.295 3.374.925.925 2.097 1.237 3.374 1.295 1.28.057 1.689.07 7.262.07s5.982-.013 7.262-.07c1.277-.058 2.449-.37 3.374-1.295.925-.925 1.237-2.097 1.295-3.374.057-1.28.07-1.689.07-7.262s-.013-5.982-.07-7.262c-.058-1.277-.37-2.449-1.295-3.374C19.451.44 18.279.128 17.002.07 15.722.013 15.313 0 12 0z"
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062
+                2.633.35 3.608 1.325.975.975 1.263 2.242
+                1.325 3.608.058 1.266.07 1.646.07 4.85s-.012
+                3.584-.07 4.85c-.062 1.366-.35 2.633-1.325
+                3.608-.975.975-2.242 1.263-3.608
+                1.325-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.35-3.608-1.325-.975-.975-1.263-2.242-1.325-3.608C2.175
+                15.747 2.163 15.367 2.163
+                12s.012-3.584.07-4.85c.062-1.366.35-2.633
+                1.325-3.608C4.517 2.513 5.784 2.225 7.15
+                2.163 8.416 2.105 8.796 2.093 12
+                2.093zm0-2.163C8.741 0 8.332.013 7.052.07
+                5.775.128 4.603.44 3.678
+                1.364 2.754 2.289 2.441 3.461 2.383
+                4.738 2.326 6.018 2.313 6.427 2.313
+                12c0 5.573.013 5.982.07 7.262.058
+                1.277.37 2.449 1.295 3.374.925.925 2.097
+                1.237 3.374 1.295 1.28.057 1.689.07 7.262.07s5.982-.013
+                7.262-.07c1.277-.058 2.449-.37
+                3.374-1.295.925-.925 1.237-2.097
+                1.295-3.374.057-1.28.07-1.689.07-7.262s-.013-5.982-.07-7.262c-.058-1.277-.37-2.449-1.295-3.374C19.451.44
+                18.279.128 17.002.07 15.722.013 15.313
+                0 12 0z"
               ></path>
               <path
-                d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998z"
+                d="M12 5.838a6.162 6.162 0 1 0
+                0 12.324 6.162 6.162 0 0 0
+                0-12.324zm0 10.162a3.999 3.999 0 1 1
+                0-7.998 3.999 3.999 0 0 1
+                0 7.998z"
               ></path>
               <circle cx="18.406" cy="5.594" r="1.44"></circle>
             </svg>
             <span class="sr-only">Instagram</span>
           </a>
+          <!-- Puedes agregar más enlaces a redes sociales aquí -->
         </div>
-
-        </div>
-
-        <GroupFooterNav>
-          <FooterNav title={"Company"} navItems={footerCompany} />
-          <FooterNav title={"Solutions"} navItems={footerNav1} />
-        </GroupFooterNav>
-
-        <GroupFooterNav>
-          <FooterNav title={"Support"} navItems={footerSupport} />
-          <FooterNav title={"Ressources"} navItems={footerLegal} />
-        </GroupFooterNav>
       </div>
     </Container>
-    <div class="py-2 relative">
+    <!-- Sección de Derechos Reservados -->
+    <div class="py-2">
       <Container>
-        <div
-          class="flex justify-between items-center gap-6 md:text-lg text-heading-3"
-        >
+        <div class="flex flex-col items-center text-center gap-2 md:text-lg text-heading-3">
           <div>
-            &copy; <span id="year"></span> Resolve 2024 All right reserved
+            &copy; <span id="year"></span> Resolve. All rights reserved.
           </div>
           <div>
-            Made by <a
-              href="https://resolvewebsites.com.br/"
-              target="_blank"
-              class="font-semibold">Resolve Web Sites</a
-            >
+            Made by <a href="https://resolvewebsites.com.br/" target="_blank" class="font-semibold">Resolve Web Sites</a>
           </div>
         </div>
       </Container>
     </div>
   </footer>
 </div>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>

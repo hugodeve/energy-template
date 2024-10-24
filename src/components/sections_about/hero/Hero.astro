@@ -1,22 +1,21 @@
 ---
 import { Image, Picture } from "astro:assets";
-import heroImg from "./assets/wind3.webp";
+import aboutUsImg from "./assets/about-us-image.webp"; // Asegúrate de tener una imagen relevante
 import CtaButton from "../../shared/CtaButton.astro";
 import GradiantText from "../../shared/GradiantText.astro";
 import SubTitle from "../../shared/SubTitle.astro";
 import Title from "../../shared/Title.astro";
 import LazyImage from "../../shared/LazyImage.astro";
 
-const heroSection = {
-  headline1: "Resolve",
-  headline2: "Construction and Renovation Company",
-  headline3: "With Expertise",
-  headline4: "Today!",
-  subheading1: "Transform your home with our renovation services",
-  subheading2: "and enhance the beauty of your facade",
-  subheading3: "for years of lasting value.",
-  buttonText: "Get Your Home Revamped Today!",
-  backgroundImage: "hero-background-image.jpg",
+const aboutUsSection = {
+  headline1: "Acerca de",
+  headline2: "Nuestra Empresa",
+  headline3: "Comprometidos con la Excelencia",
+  subheading1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  subheading2: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  subheading3: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  buttonText: "Contáctanos",
+  backgroundImage: "about-us-background-image.jpg",
 };
 
 export interface Props {
@@ -26,43 +25,33 @@ export interface Props {
 const { className = "" } = Astro.props;
 ---
 
-<section class=`relative  ${className} w-full h-[80vh]` id="hero">
-  <div class="w-full h-[80vh] pt-[100px]">
-    <div
-      class="w-full h-full grid grid-cols-1 md:grid-cols-2 justify-end bg-base-100 dark:bg-base-dark-900"
-    >
-      <div class="justify-center flex flex-col text-center md:ml-auto">
-        <Title className="">
-          {heroSection.headline1}
-          <GradiantText
-            >{" " + heroSection.headline2}
-            <br />
-            {" " + heroSection.headline3}
-          </GradiantText>{heroSection.headline4}
+<section class={`relative ${className} w-full py-20`} id="about-us">
+  <div class="w-full max-w-7xl mx-auto px-6 md:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+      <!-- Contenido de texto -->
+      <div class="flex flex-col text-center md:text-left">
+        <Title>
+          {aboutUsSection.headline1}{" "}
+          <GradiantText>{aboutUsSection.headline2}</GradiantText>
         </Title>
-        <SubTitle className=" mt-10 leading-9 italic">
-          {heroSection.subheading1}
+        <SubTitle className="mt-6 leading-8">
+          {aboutUsSection.subheading1}
           <br />
-          {heroSection.subheading2}<br />
-          {heroSection.subheading3}
+          {aboutUsSection.subheading2}
+          <br />
+          {aboutUsSection.subheading3}
         </SubTitle>
-        <div class="pt-10">
-          <CtaButton>{heroSection.buttonText}</CtaButton>
+        <div class="mt-8">
+          <CtaButton>{aboutUsSection.buttonText}</CtaButton>
         </div>
       </div>
-      <div class="flex relative pt-10 md:p-0">
+      <!-- Imagen -->
+      <div class="flex justify-center md:justify-end">
         <LazyImage
-          src={heroImg}
-          alt="A picture of a wind turbine."
-          className="w-full h-full object-cover"
+          src={aboutUsImg}
+          alt="Imagen sobre nosotros"
+          className="w-full h-auto object-cover rounded-lg shadow-lg"
         />
-        <svg
-          class="fill-base-100 dark:fill-base-dark-900 z-10 absolute top-0 start-0 h-full hidden md:block"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 500 400"
-        >
-          <path d="M0 0l0 400L100 0Z"> </path>
-        </svg>
       </div>
     </div>
   </div>

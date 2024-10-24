@@ -1,5 +1,5 @@
-# Astro - Template - Green Energy Company
+# RESOLVE Project
 
-### 🚀 Check Out the Live Site
+### 🚀 Install
 
-https://vbartalis.github.io/energy-template/
+
