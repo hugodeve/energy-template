@@ -62,11 +62,11 @@ const { className } = Astro.props;
   <br>
 
  <!-- Secciones con imágenes y texto alternados -->
-{aboutUsSection.sections.map((section, index) => {
+ {aboutUsSection.sections.map((section, index) => {
   const isEven = index % 2 === 0;
   const flexDirection = isEven ? "md:flex-row" : "md:flex-row-reverse";
   return (
-    <Container key={index} className="pb-16">
+    <Container className="pb-16">
       <div
         class={`flex flex-col ${flexDirection} items-center gap-10 lg:gap-12 mx-auto max-w-7xl w-full`}
       >

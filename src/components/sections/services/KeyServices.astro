@@ -12,58 +12,48 @@ export interface Props {
 const { className } = Astro.props;
 ---
 
-<section id="services" class=`${className}`>
+<section id="services" class={`${className}`}>
   <Container size="wide">
     <Title2>{servicesSectionData.title}</Title2>
   </Container>
   <Container size="wide">
-    <div class="grid grid-col-1 md:grid-cols-3 lg:grid-cols-4 gap-y-2 gap-x-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-6">
+      <!-- Tarjeta de texto (ServiceCopyTextCard) -->
       <ServiceCopyTextCard
-        className="md:col-span-2 flex flex-col"
+        className="col-span-1 md:col-span-2 flex flex-col"
         subheading={servicesSectionData.subheading}
       />
-      <div class="">
-        <ServiceCard
-          title={servicesSectionData.services[0].title}
-          description={servicesSectionData.services[0].briefDescription}
-          visual={servicesSectionData.services[0].visual}
-        />
-      </div>
-      <div class="">
-        <ServiceCard
-          title={servicesSectionData.services[1].title}
-          description={servicesSectionData.services[1].briefDescription}
-          visual={servicesSectionData.services[1].visual}
-        />
-      </div>
-      <div class="">
-        <ServiceCard
-          title={servicesSectionData.services[2].title}
-          description={servicesSectionData.services[2].briefDescription}
-          visual={servicesSectionData.services[2].visual}
-        />
-      </div>
-      <div class="">
-        <ServiceCard
-          title={servicesSectionData.services[3].title}
-          description={servicesSectionData.services[3].briefDescription}
-          visual={servicesSectionData.services[3].visual}
-        />
-      </div>
-      <div class="">
-        <ServiceCard
-          title={servicesSectionData.services[4].title}
-          description={servicesSectionData.services[4].briefDescription}
-          visual={servicesSectionData.services[4].visual}
-        />
-      </div>
-      <div class="">
-        <ServiceCard
-          title={servicesSectionData.services[5].title}
-          description={servicesSectionData.services[5].briefDescription}
-          visual={servicesSectionData.services[5].visual}
-        />
-      </div>
+      <!-- Tarjetas de servicio -->
+      <ServiceCard
+        title={servicesSectionData.services[0].title}
+        description={servicesSectionData.services[0].briefDescription}
+        visual={servicesSectionData.services[0].visual}
+      />
+      <ServiceCard
+        title={servicesSectionData.services[1].title}
+        description={servicesSectionData.services[1].briefDescription}
+        visual={servicesSectionData.services[1].visual}
+      />
+      <ServiceCard
+        title={servicesSectionData.services[2].title}
+        description={servicesSectionData.services[2].briefDescription}
+        visual={servicesSectionData.services[2].visual}
+      />
+      <ServiceCard
+        title={servicesSectionData.services[3].title}
+        description={servicesSectionData.services[3].briefDescription}
+        visual={servicesSectionData.services[3].visual}
+      />
+      <ServiceCard
+        title={servicesSectionData.services[4].title}
+        description={servicesSectionData.services[4].briefDescription}
+        visual={servicesSectionData.services[4].visual}
+      />
+      <ServiceCard
+        title={servicesSectionData.services[5].title}
+        description={servicesSectionData.services[5].briefDescription}
+        visual={servicesSectionData.services[5].visual}
+      />
     </div>
   </Container>
 </section>

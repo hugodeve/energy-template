@@ -113,5 +113,9 @@ import Paragraph from "../components/shared/Paragraph.astro";
   </footer>
 </div>
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const yearElement = document.getElementById('year');
+
+if (yearElement) {
+  yearElement.textContent = `${new Date().getFullYear()}`;
+}
 </script>
