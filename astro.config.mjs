@@ -6,6 +6,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
+  output: 'static',
   site: "https://resolvecuritiba.com.br/newsite",
-  base: "/energy-template/"
+  base: "/newsite/"
 });
