@@ -1,5 +1,5 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { getTranslation } from "../../../i18n";
 import heroImg from "./assets/wind3.webp";
 import CtaButton from "../../shared/CtaButton.astro";
 import GradiantText from "../../shared/GradiantText.astro";
@@ -7,17 +7,12 @@ import SubTitle from "../../shared/SubTitle.astro";
 import Title from "../../shared/Title.astro";
 import LazyImage from "../../shared/LazyImage.astro";
 
-const heroSection = {
-  headline1: "Revitalizing",
-  headline2: "Your Home,",
-  headline3: "With Expertise",
-  headline4: "Today!",
-  subheading1: "Transform your home with our renovation services",
-  subheading2: "and enhance the beauty of your facade",
-  subheading3: "for years of lasting value.",
-  buttonText: "Get Your Home Revamped Today!",
-  backgroundImage: "hero-background-image.jpg",
-};
+// Obtener la URL completa
+const url = new URL(Astro.request.url);
+const locale = url.searchParams.get('lang') || 'en';
+
+// Obtener las traducciones de acuerdo con el idioma seleccionado
+const translations = await getTranslation(locale);
 
 export interface Props {
   className?: string;
@@ -26,49 +21,56 @@ export interface Props {
 const { className = "" } = Astro.props;
 ---
 
-<section class={`relative ${className} w-full`} id="hero">
-  <div class="w-full pt-16 md:pt-24 pb-16 md:pb-24">
-    <div class="w-full grid grid-cols-1 md:grid-cols-2 items-center bg-base-100 dark:bg-base-dark-900">
-      <!-- Contenido de texto -->
-      <div class="flex flex-col items-center md:items-start text-center md:text-left px-6 md:px-12">
-        <Title>
-          {heroSection.headline1}
-          <GradiantText>
-            {` ${heroSection.headline2}`}
+<section class={`relative ${className} w-full overflow-hidden`} id="hero">
+  <div class="w-full pt-20 md:pt-32 pb-16 md:pb-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Contenido de texto -->
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <Title className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            {translations.hero.headline1}
+            <GradiantText class="inline-block">
+              {translations.hero.headline2}
+              <br class="hidden lg:block" />
+              {translations.hero.headline3}
+            </GradiantText>
+            {translations.hero.headline4}
+          </Title>
+          <SubTitle className="mt-6 text-lg md:text-xl lg:text-2xl leading-relaxed italic text-gray-600 dark:text-gray-300">
+            {translations.hero.subheading1}
             <br class="hidden md:block" />
-            {` ${heroSection.headline3}`}
-          </GradiantText>
-          {heroSection.headline4}
-        </Title>
-        <SubTitle className="mt-6 leading-7 md:leading-8 italic">
-          {heroSection.subheading1}
-          <br class="hidden md:block" />
-          {heroSection.subheading2}
-          <br class="hidden md:block" />
-          {heroSection.subheading3}
-        </SubTitle>
-        <div class="pt-6">
-          <CtaButton>{heroSection.buttonText}</CtaButton>
+            {translations.hero.subheading2}
+            <br class="hidden md:block" />
+            {translations.hero.subheading3}
+          </SubTitle>
+          <div class="mt-8">
+            <CtaButton class="text-lg px-8 py-4 rounded-full transition-transform hover:scale-105">
+              {translations.hero.buttonText}
+            </CtaButton>
+          </div>
         </div>
-      </div>
-      <!-- Imagen -->
-      <div class="flex justify-center md:justify-end mt-6 md:mt-0 px-6 md:px-0 relative">
-        <div class="w-full max-w-md">
-          <LazyImage
-            src={heroImg}
-            alt="A picture of a wind turbine."
-            className="w-full h-auto object-cover rounded-lg"
-          />
+        <!-- Imagen -->
+        <div class="relative">
+          <div class="w-full max-w-lg mx-auto lg:mr-0">
+            <LazyImage
+              src={heroImg}
+              alt="A picture of a wind turbine."
+              className="w-full h-auto object-cover rounded-lg shadow-2xl"
+            />
+          </div>
+          <!-- SVG decorativo -->
+          <svg
+            class="fill-base-100 dark:fill-base-dark-900 absolute top-1/2 -left-24 h-full w-24 transform -translate-y-1/2 hidden lg:block"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 100 400"
+            preserveAspectRatio="none"
+          >
+            <path d="M0 0l100 200L0 400z"></path>
+          </svg>
         </div>
-        <!-- SVG decorativo -->
-        <svg
-          class="fill-base-100 dark:fill-base-dark-900 absolute top-0 left-0 h-full hidden md:block"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 500 400"
-        >
-          <path d="M0 0l0 400L100 0Z"></path>
-        </svg>
       </div>
     </div>
   </div>
+  <!-- Background decoration -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900 opacity-10 -z-10"></div>
 </section>

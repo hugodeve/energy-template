@@ -1,21 +1,23 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import heroImg from "./assets/about-us-image.webp";
 import CtaButton from "../../shared/CtaButton.astro";
 import GradiantText from "../../shared/GradiantText.astro";
 import SubTitle from "../../shared/SubTitle.astro";
 import Title from "../../shared/Title.astro";
-import LazyImage from "../../shared/LazyImage.astro";
 
 const heroSection = {
-  headline1: "Revitalizing",
-  headline2: "Your Home,",
-  headline3: "With Expertise",
-  headline4: "Today!",
-  subheading1: "Transform your home with our renovation services",
-  subheading2: "and enhance the beauty of your facade",
-  subheading3: "for years of lasting value.",
-  buttonText: "Get Your Home Revamped Today!",
+  headline1: "Why Choose",
+  headline2: "\"Resolve\"?",
+  subheading1: "Resolve Administration and Services Execution began in 2018 with a strategic alliance",
+  subheading2: "with a leading company in the Electronic Security sector, specializing in",
+  subheading3: "residential and commercial condominiums in Curitiba/PR. Since then, we have",
+  subheading4: "been dedicated to managing projects that meet our clients' quality, timeline, and budget",
+  subheading5: "objectives, aiming to enhance the value of their properties.",
+  subheading6: "We specialize in construction and renovations across architectural, structural,",
+  subheading7: "and installation fields.",
+  subheading8: "24/7 Emergency Maintenance Services",
+  buttonText: "Get Your Project Started Today!",
   backgroundImage: "hero-background-image.jpg",
 };
 
@@ -26,50 +28,64 @@ export interface Props {
 const { className = "" } = Astro.props;
 ---
 
-<section class={`relative ${className} w-full`} id="hero">
-  <div class="w-full pt-16 md:pt-[100px]">
-    <div
-      class="w-full grid grid-cols-1 md:grid-cols-2 items-center bg-base-100 dark:bg-base-dark-900"
-    >
-      <!-- Contenido de texto -->
-      <div class="flex flex-col items-center md:items-start text-center md:text-left px-6 md:px-12">
-        <Title>
-          {heroSection.headline1}
-          <GradiantText>
-            {" " + heroSection.headline2}
-            <br class="hidden md:block" />
-            {" " + heroSection.headline3}
+<section class={`relative ${className} w-full overflow-hidden`} id="hero">
+  <!-- Gradient Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900 opacity-10"></div>
+
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-32 pb-16 md:pb-24 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Text Content -->
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 animate-slide-up">
+        <Title className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          {heroSection.headline1}{" "}
+          <GradiantText class="inline-block">
+            {heroSection.headline2}
           </GradiantText>
-          {heroSection.headline4}
         </Title>
-        <SubTitle className="mt-6 leading-7 italic">
+        <SubTitle className="text-lg md:text-xl leading-relaxed italic text-gray-700 dark:text-gray-300">
           {heroSection.subheading1}
           <br />
           {heroSection.subheading2}
           <br />
           {heroSection.subheading3}
+          <br />
+          {heroSection.subheading4}
+          <br />
+          {heroSection.subheading5}
+          <br />
+          {heroSection.subheading6}
+          <br />
+          {heroSection.subheading7}
+          <br />
+          {heroSection.subheading8}
         </SubTitle>
-        <div class="pt-6">
-          <CtaButton>{heroSection.buttonText}</CtaButton>
-        </div>
+        <CtaButton class="text-lg px-8 py-4 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-transform transform hover:scale-105">
+          {heroSection.buttonText}
+        </CtaButton>
       </div>
-      <!-- Imagen -->
-      <div class="flex justify-center md:justify-end mt-6 md:mt-0">
-        <div class="w-full max-w-md">
-          <LazyImage
+
+      <!-- Image Content -->
+      <div class="relative animate-fade-in">
+        <div class="w-full max-w-lg mx-auto lg:ml-auto">
+          <Image
             src={heroImg}
-            alt="A picture of a wind turbine."
-            className="w-full h-auto object-cover rounded-lg"
+            alt="A beautifully renovated home facade"
+            class="w-full h-auto object-cover rounded-lg shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-105 animate-slide-up"
+            loading="lazy"
+            width={600}
+            height={400}
           />
         </div>
-        <svg
-          class="fill-base-100 dark:fill-base-dark-900 z-10 absolute top-0 left-0 h-full hidden md:block"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 500 400"
-        >
-          <path d="M0 0l0 400L100 0Z"></path>
-        </svg>
+        
       </div>
     </div>
   </div>
+
+  <!-- Overlapping Background Image -->
+  <div
+    class="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-5"
+    style={`background-image: url('/${heroSection.backgroundImage}')`}
+    aria-hidden="true"
+  ></div>
 </section>
