@@ -1,0 +1,45 @@
+---
+// LanguageSwitcher.astro
+
+const currentUrl = new URL(Astro.request.url);
+const currentLang = currentUrl.searchParams.get('lang') || 'en';
+
+const languages = [
+  { code: 'en', label: '🇺🇸 EN' },
+  { code: 'pt', label: '🇧🇷 PT' },
+];
+---
+
+<div class="language-switcher">
+  <label for="language-select" class="sr-only">Seleccionar idioma</label>
+  <select
+    id="language-select"
+    name="language"
+    value={currentLang}
+    class="language-select"
+    onchange="handleLanguageChange(event)"
+  >
+    {languages.map((lang) => (
+      <option value={lang.code}>{lang.label}</option>
+    ))}
+  </select>
+</div>
+
+<script type="text/javascript">
+  function handleLanguageChange(event) {
+    const selectedLang = event.target.value;
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set('lang', selectedLang);
+    window.location.href = currentUrl.toString();
+  }
+</script>
+
+<style>
+  .language-select {
+    background-color: #2563eb;
+    color: white;
+    border-radius: 6px;
+    padding: 8px;
+    font-weight: bold;
+  }
+</style>

@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "innovations": "Innovations",
+    "testimonials": "Testimonials",
+    "environment": "Environment"
+  },
+  "hero": {
+    "title": "Welcome to Our Site",
+    "subtitle": "We offer the best services for you."
+  },
+  "button": {
+    "getStarted": "Get Started"
+  },
+  "layout": {
+    "footer": "© 2024 Your Company. All rights reserved."
+  }
+}

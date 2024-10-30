@@ -1,166 +1,72 @@
 ---
+// Importa los componentes y las utilidades necesarias
 import Container from "../components/shared/Container.astro";
+import Navitem from "../components/shared/Navitem.astro";
 import BtnLink from "../components/shared/BtnLink.astro";
 import BtnThemeSwitch from "../components/shared/BtnThemeSwitch.astro";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
-// Obtener la URL completa
+// Obtén la URL y el idioma actual
 const url = new URL(Astro.request.url);
-const locale = url.searchParams.get('lang') || 'en'; // Obtén el idioma de la URL
+const locale = url.searchParams.get('lang') || 'en';
+const lang = getLangFromUrl(url); // Usa la función para obtener el idioma
 
-// Definir los elementos de navegación basados en el idioma
+// Obtén las traducciones para el idioma actual
+const t = useTranslations(lang);
+
+// Definir elementos de navegación utilizando las traducciones
 const navItems = [
-  { href: "/newsite", text: locale === 'en' ? "Home" : "Início" },
-  { href: "/newsite/about", text: locale === 'en' ? "About" : "Sobre nós" },
-  { href: "/newsite#services", text: locale === 'en' ? "Services" : "Serviços" },
-  { href: "/newsite#innovations", text: locale === 'en' ? "Innovations" : "Inovações" },
-  { href: "/newsite#testimonials", text: locale === 'en' ? "Testimonials" : "Depoimentos" },
-  { href: "/newsite#environment", text: locale === 'en' ? "Environment" : "Meio Ambiente" },
+  { href: "/newsite", text: t('nav.home') },
+  { href: "/newsite/about", text: t('nav.about') },
+  { href: "/newsite#services", text: t('nav.services') },
+  { href: "/newsite#innovations", text: t('nav.innovations') },
+  { href: "/newsite#testimonials", text: t('nav.testimonials') },
+  { href: "/newsite#environment", text: t('nav.environment') },
 ];
 ---
 
-<header class="p-4 transition-colors duration-300 bg-primary-500 dark:bg-primary-800 text-gray-900 dark:text-white">
-  <Container className="container mx-auto flex items-center justify-between">
+<header class="absolute inset-x-0 top-0 z-50 py-6 px-6 lg:bg-primary-500 lg:dark:bg-primary-800 lg:text-white">
+  <nav class="w-full flex justify-between gap-6 relative">
     <!-- Logo -->
-    <a href="/" class="flex-shrink-0 flex items-center">
-      <!-- LOGO SVG -->
-      <div class="h-8 w-auto flex-shrink-0 ">
-        <span class="text-xl font-bold text-gray-800 dark:text-white text-2xl font-bold ml-2">Resolve</span>  
-      </div>
-    </a>
+    <div class="min-w-max inline-flex relative">
+      <a href="/energy-template" class="relative flex items-center gap-3">
+        <div class="relative h-7 overflow-hidden flex rounded-xl">
+          <h3>RESOLVE</h3>
+        </div>
+      </a>
+    </div>
 
-    <!-- Menú de Navegación (Escritorio) -->
-    <nav class="hidden lg:flex items-center gap-6">
-      <ul class="flex items-center gap-4">
-        {navItems.map((item) => (
-          <li>
-            <a href={item.href} class="relative group">
-              {item.text}
-              <span class="absolute left-0 bottom-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <!-- Menú de selección de idioma -->
-      <ul class="flex items-center gap-4">
-        <li>
-          <a href="/?lang=en" class={`relative group ${locale === 'en' ? 'font-bold' : ''}`}>
-            EN
-            <span class="absolute left-0 bottom-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-        </li>
-        <li>
-          <a href="/?lang=pt" class={`relative group ${locale === 'pt' ? 'font-bold' : ''}`}>
-            PT(BR)
-            <span class="absolute left-0 bottom-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-        </li>
-      </ul>
-      
-      <BtnLink
-        text={locale === 'en' ? "Get Started" : "Começar"}
-        href="#cta"
-        className="text-lg"
-        variant="cta"
-      />
-      <BtnThemeSwitch variant="primary" />
-    </nav>
-
-    <!-- Botón de menú para móviles -->
-    <button
-      data-toggle-nav
-      aria-label="Toggle navigation"
-      class="lg:hidden flex items-center justify-center p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+    <!-- Navbar -->
+    <div
+      data-navbar
+      class="flex h-0 overflow-hidden lg:!h-auto lg:scale-y-100 duration-300 ease-linear flex-col gap-y-6 gap-x-4 lg:flex-row w-full lg:justify-between lg:items-center absolute lg:relative top-full lg:top-0 bg-primary-500 dark:bg-primary-800 text-white border-x border-box-border lg:border-x-0"
     >
-      <!-- Icono de menú hamburguesa -->
-      <svg
-        class="h-6 w-6 text-gray-800 dark:text-white"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
+      <ul
+        class="border-t border-box-border lg:border-t-0 px-6 lg:px-0 pt-6 lg:pt-0 flex flex-col lg:flex-row gap-y-4 gap-x-3 text-lg text-white w-full lg:justify-end lg:items-center"
       >
-        <!-- Icono de abierto -->
-        <path
-          data-open
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"
-        />
-        <!-- Icono de cerrado -->
-        <path
-          data-close
-          class="hidden"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
-    </button>
-  </Container>
-
-  <!-- Menú desplegable para móviles -->
-  <div
-    data-navbar
-    class="hidden lg:hidden bg-white dark:bg-custom-dark-bg shadow-md transition-all duration-300 ease-in-out"
-  >
-    <Container className="px-4 py-6 flex flex-col gap-4">
-      <ul class="flex flex-col gap-3">
         {navItems.map((item) => (
-          <li>
-            <a href={item.href} class="relative group inline-block">
-              {item.text}
-              <span class="absolute left-0 bottom-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </a>
-          </li>
+          <Navitem key={item.href} href={item.href} text={item.text} />
         ))}
       </ul>
-      <BtnLink
-        text={locale === 'en' ? "Get Started" : "Começar"}
-        href="#cta"
-        className="text-lg w-full text-center"
-        variant="cta"
-      />
-      <div class="flex justify-center">
-        <BtnThemeSwitch variant="primary" />
-      </div>
-    </Container>
-  </div>
+      <!-- Selector de idioma -->
+      <LanguageSwitcher />
+    </div>
 
+    <!-- Theme Switch y Toggle Button -->
+    <div class="min-w-max flex items-center gap-x-3">
+      <BtnThemeSwitch variant="primary" />
+
+      <button
+        data-toggle-nav
+        data-open-nav="false"
+        class="lg:hidden lg:invisible outline-none w-7 h-auto flex flex-col relative"
+      >
+        <span class="w-6 h-0.5 rounded-full transition-all duration-300 ease-linear bg-black dark:bg-white"></span>
+        <span class="w-6 origin-center mt-1 h-0.5 rounded-full transition-all duration-300 ease-linear bg-black dark:bg-white"></span>
+        <span class="w-6 mt-1 h-0.5 rounded-full transition-all duration-300 ease-linear bg-black dark:bg-white"></span>
+        <span class="sr-only">Toggle Navigation</span>
+      </button>
+    </div>
+  </nav>
 </header>
-
-<script>
-  // This script will run on the client to handle theme changes
-  const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
-  })();
-
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark');
-  } else {
-    document.documentElement.classList.add('dark');
-  }
-
-  
-
-  // Toggle mobile menu
-  const navToggle = document.querySelector('[data-toggle-nav]');
-  const navbar = document.querySelector('[data-navbar]');
-  const openIcon = document.querySelector('[data-open]');
-  const closeIcon = document.querySelector('[data-close]');
-
-  if (navToggle && navbar && openIcon && closeIcon) {
-    navToggle.addEventListener('click', () => {
-      navbar.classList.toggle('hidden');
-      openIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-    });
-  }
-</script>
