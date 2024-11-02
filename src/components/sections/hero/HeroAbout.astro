@@ -1,0 +1,134 @@
+---
+import { Image } from "astro:assets"
+import heroImg from "./assets/about-us-image.webp"
+import CtaButton from "@/components/shared/CtaButton.astro"
+import GradiantText from "@/components/shared/GradiantText.astro"
+import SubTitle from "@/components/shared/SubTitle.astro"
+import Title from "@/components/shared/Title.astro"
+import { useTranslations, type Lang } from "@/i18n"
+
+const t = useTranslations(Astro.currentLocale as Lang)
+
+const heroSection = {
+  headline1: t({ en: "Why Choose", pt: "Por que escolher" }),
+  headline2: t({ en: '"Resolve"?', pt: '"Resolve"?' }),
+  subheading1: t({
+    en: "Resolve Administration and Services Execution began in 2018 with a strategic alliance",
+    pt: "A Resolve Administração e Execução de Serviços iniciou em 2018 com uma aliança estratégica",
+  }),
+  subheading2: t({
+    en: "with a leading company in the Electronic Security sector, specializing in",
+    pt: "com uma empresa líder no setor de Segurança Eletrônica, especializada em",
+  }),
+  subheading3: t({
+    en: "residential and commercial condominiums in Curitiba/PR. Since then, we have",
+    pt: "condomínios residenciais e comerciais em Curitiba/PR. Desde então, atuamos",
+  }),
+  subheading4: t({
+    en: "been dedicated to managing projects that meet our clients' quality, timeline, and budget",
+    pt: "tem se dedicado a gerenciar projetos que atendem à qualidade, cronograma e orçamento de nossos clientes",
+  }),
+  subheading5: t({
+    en: "objectives, aiming to enhance the value of their properties.",
+    pt: "objetivos, visando valorizar seus imóveis.",
+  }),
+  subheading6: t({
+    en: "We specialize in construction and renovations across architectural, structural,",
+    pt: "Somos especializados em construção e reformas em áreas arquitetônicas, estruturais,",
+  }),
+  subheading7: t({
+    en: "and installation fields.",
+    pt: "e campos de instalação.",
+  }),
+  subheading8: t({
+    en: "24/7 Emergency Maintenance Services",
+    pt: "Serviços de manutenção de emergência 24/7",
+  }),
+  buttonText: t({
+    en: "Get Your Project Started Today!",
+    pt: "Comece seu projeto hoje mesmo!",
+  }),
+  backgroundImage: "hero-background-image.jpg",
+}
+
+export interface Props {
+  className?: string
+}
+
+const { className = "" } = Astro.props
+---
+
+<section class={`relative ${className} w-full overflow-hidden`} id="hero">
+  <!-- Gradient Background -->
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900 opacity-10"
+  >
+  </div>
+
+  <!-- Main Content -->
+  <div
+    class="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-32 pb-16 md:pb-24 relative z-10"
+  >
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Text Content -->
+      <div
+        class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 animate-slide-up"
+      >
+        <Title
+          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+        >
+          {heroSection.headline1}{" "}
+          <GradiantText class="inline-block">
+            {heroSection.headline2}
+          </GradiantText>
+        </Title>
+        <SubTitle
+          className="text-lg md:text-xl leading-relaxed italic text-gray-700 dark:text-gray-300"
+        >
+          {heroSection.subheading1}
+          <br />
+          {heroSection.subheading2}
+          <br />
+          {heroSection.subheading3}
+          <br />
+          {heroSection.subheading4}
+          <br />
+          {heroSection.subheading5}
+          <br />
+          {heroSection.subheading6}
+          <br />
+          {heroSection.subheading7}
+          <br />
+          {heroSection.subheading8}
+        </SubTitle>
+        <CtaButton
+          class="text-lg px-8 py-4 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-transform transform hover:scale-105"
+        >
+          {heroSection.buttonText}
+        </CtaButton>
+      </div>
+
+      <!-- Image Content -->
+      <div class="relative animate-fade-in">
+        <div class="w-full max-w-lg mx-auto lg:ml-auto">
+          <Image
+            src={heroImg}
+            alt="A beautifully renovated home facade"
+            class="w-full h-auto object-cover rounded-lg shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-105 animate-slide-up"
+            loading="lazy"
+            width={600}
+            height={400}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlapping Background Image -->
+  <div
+    class="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-5"
+    style={`background-image: url('/${heroSection.backgroundImage}')`}
+    aria-hidden="true"
+  >
+  </div>
+</section>

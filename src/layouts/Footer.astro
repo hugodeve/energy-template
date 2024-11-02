@@ -1,26 +1,35 @@
 ---
-import Container from "../components/shared/Container.astro";
-import Paragraph from "../components/shared/Paragraph.astro";
+import Container from "@/components/shared/Container.astro"
+import Paragraph from "@/components/shared/Paragraph.astro"
+import { useTranslations, type Lang } from "@/i18n"
+
+const t = useTranslations(Astro.currentLocale as Lang)
 ---
+
 <div class="relative mt-16 bg-base-200 dark:bg-base-dark-800">
   <footer class="relative pt-28 rounded-t-3xl">
     <Container className="pb-8 relative overflow-auto">
       <div class="flex flex-col items-center text-center">
-        <!-- Logo o Nombre de la Empresa -->
         <a href="#" class="flex items-center gap-3">
           <div class="inline-flex text-lg font-semibold text-heading-1">
             Resolve
           </div>
         </a>
-        <!-- Descripción Breve -->
         <Paragraph className="mt-8">
-          We work in construction and renovations in the architectural, structural and installation fields.
+          {
+            t({
+              en: "We work in construction and renovations in the architectural, structural and installation fields.",
+              pt: "Atuamos na construção e reformas nas áreas de arquitetura, estrutura e instalação.",
+            })
+          }
         </Paragraph>
-        <!-- Enlaces a Redes Sociales -->
+
         <div class="flex items-center gap-4 text-heading-3 mt-8">
-          <!-- LinkedIn -->
-          <a href="#" class="transition hover:text-heading-1 hover:scale-105" aria-label="LinkedIn">
-            <!-- SVG de LinkedIn -->
+          <a
+            href="#"
+            class="transition hover:text-heading-1 hover:scale-105"
+            aria-label="LinkedIn"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -47,9 +56,11 @@ import Paragraph from "../components/shared/Paragraph.astro";
             <span class="sr-only">LinkedIn</span>
           </a>
 
-          <!-- Instagram -->
-          <a href="#" class="transition hover:text-heading-1 hover:scale-105" aria-label="Instagram">
-            <!-- SVG de Instagram -->
+          <a
+            href="#"
+            class="transition hover:text-heading-1 hover:scale-105"
+            aria-label="Instagram"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -93,29 +104,47 @@ import Paragraph from "../components/shared/Paragraph.astro";
             </svg>
             <span class="sr-only">Instagram</span>
           </a>
-          <!-- Puedes agregar más enlaces a redes sociales aquí -->
         </div>
       </div>
     </Container>
-    <!-- Sección de Derechos Reservados -->
+
     <div class="py-2">
       <Container>
-        <div class="flex flex-col items-center text-center gap-2 md:text-lg text-heading-3">
+        <div
+          class="flex flex-col items-center text-center gap-2 md:text-lg text-heading-3"
+        >
           <div>
-            &copy; <span id="year"></span> Resolve. All rights reserved.
+            &copy; <span id="year"></span> Resolve.
+            {
+              t({
+                en: "All rights reserved.",
+                pt: "Todos os direitos reservados.",
+              })
+            }
           </div>
           <div>
-            Made by <a href="https://resolvewebsites.com.br/" target="_blank" class="font-semibold">Resolve Web Sites</a>
+            {
+              t({
+                en: "Made by",
+                pt: "Feito por",
+              })
+            }
+            <a
+              href="https://resolvewebsites.com.br/"
+              target="_blank"
+              class="font-semibold">Resolve Web Sites</a
+            >
           </div>
         </div>
       </Container>
     </div>
   </footer>
 </div>
-<script>
-  const yearElement = document.getElementById('year');
 
-if (yearElement) {
-  yearElement.textContent = `${new Date().getFullYear()}`;
-}
+<script>
+  const yearElement = document.getElementById("year")
+
+  if (yearElement) {
+    yearElement.textContent = `${new Date().getFullYear()}`
+  }
 </script>

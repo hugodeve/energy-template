@@ -1,13 +1,16 @@
 ---
 export interface Props {
-  href: string;
-  text: string;
-  key?: string | number; // Propiedad opcional para 'key'
+  href: string
+  text: string
+  key?: string | number // Propiedad opcional para 'key'
 }
-const { href, text } = Astro.props;
+const { href, text } = Astro.props
 ---
-<li>
-  <a href={href} class="text-gray-800 dark:text-white hover:text-primary">
+
+<li
+  class="relative hover:pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-black dark:after:bg-white after:transition-all after:duration-300 after:ease-in-out hover:after:w-full"
+>
+  <a href={href} class="text-gray-800 dark:text-white">
     {text}
   </a>
 </li>

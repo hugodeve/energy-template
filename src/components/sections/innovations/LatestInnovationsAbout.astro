@@ -1,0 +1,95 @@
+---
+import Container from "@/components/shared/Container.astro";
+import GradiantText from "@/components/shared/GradiantText.astro";
+import LazyImage from "@/components/shared/LazyImage.astro";
+import Paragraph from "@/components/shared/Paragraph.astro";
+import SubTitle2 from "@/components/shared/SubTitle2.astro";
+import Title2 from "@/components/shared/Title2.astro";
+import Title3 from "@/components/shared/Title3.astro";
+import { aboutUsSection } from "./data.ts";
+
+export interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<section id="about-us" class={`relative ${className}`}>
+  <!-- Sección de título principal -->
+  <Container className="mx-auto flex flex-col items-center justify-center text-center px-4">
+    <Title2>{aboutUsSection.title}</Title2>
+    {aboutUsSection.subheading1 && (
+      <SubTitle2>
+        {aboutUsSection.subheading1}
+        {aboutUsSection.subheading2 && (
+          <>
+            <br />
+            <GradiantText>{aboutUsSection.subheading2}</GradiantText>
+          </>
+        )}
+      </SubTitle2>
+    )}
+  </Container>
+  <!-- Sección introductoria -->
+  <Container className="mt-12">
+    <div class="w-full pb-16">
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-10 lg:gap-12 mx-auto max-w-7xl w-full">
+        <!-- Imagen introductoria (opcional) -->
+        {aboutUsSection.intro.image && (
+          <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+            <div class="w-full max-w-md">
+              <LazyImage
+                src={aboutUsSection.intro.image}
+                alt={aboutUsSection.intro.headline}
+                class="rounded-3xl object-cover w-full h-auto"
+              />
+            </div>
+          </div>
+        )}
+        <!-- Contenido de texto introductorio -->
+        <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left px-4">
+          <Title3>{aboutUsSection.intro.headline}</Title3>
+          <Paragraph className="mt-3 whitespace-pre-line">
+            {aboutUsSection.intro.description}
+          </Paragraph>
+        </div>
+      </div>
+    </div>
+  </Container>
+  <hr>
+  <br>
+  <br>
+
+ <!-- Secciones con imágenes y texto alternados -->
+ {aboutUsSection.sections.map((section, index) => {
+  const isEven = index % 2 === 0;
+  const flexDirection = isEven ? "md:flex-row" : "md:flex-row-reverse";
+  return (
+    <Container className="pb-16">
+      <div
+        class={`flex flex-col ${flexDirection} items-center gap-10 lg:gap-12 mx-auto max-w-7xl w-full`}
+      >
+        <!-- Imagen -->
+        <div class="w-full md:w-1/2 flex justify-center">
+          <div class="w-full max-w-md">
+            <LazyImage
+              src={section.image}
+              alt={section.headline}
+              class="rounded-3xl object-cover w-full h-auto"
+            />
+          </div>
+        </div>
+        <!-- Contenido de texto -->
+        <div class="w-full md:w-1/2 flex flex-col items-center text-center px-4">
+          <Title3>{section.headline}</Title3>
+          <Paragraph className="mt-3 whitespace-pre-line">
+            {section.description}
+          </Paragraph>
+        </div>
+      </div>
+    </Container>
+  );
+})}
+
+</section>

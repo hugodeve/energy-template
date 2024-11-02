@@ -1,22 +1,7 @@
 ---
-import Hero from "../components/sections_about/hero/Hero.astro";
-import LatestInnovations from "../components/sections_about/innovations/LatestInnovations.astro";
-import Layout from "../layouts/Layout.astro";
+import { DEFAULT_LOCALE } from "@/i18n"
+
+const baseUrl = `${import.meta.env.BASE_URL}/`
 ---
 
-<Layout title="Welcome to the Agency template ">
-    <main class="flex flex-col gap-y-20 md:gap-y-40 overflow-hidden px-4 md:px-8">
-      <!-- Hero Section: -->
-      <!-- High-quality image or animation of renewable energy sources. -->
-      <!-- Headline and subheading centered on the page. -->
-      <Hero />
-  
-      <LatestInnovations />
-      <!-- Latest Innovations: -->
-      <!-- Highlight any recent advancements or innovations in your green energy solutions. -->
-      <!-- Use images and concise descriptions to showcase your commitment to cutting-edge technology. -->
-      <!-- Emphasize how staying with your company means staying at the forefront of green energy. -->
-  
-    </main>
-  </Layout>
-  
+<meta http-equiv="refresh" content={`0;url=${baseUrl + DEFAULT_LOCALE}/`} />

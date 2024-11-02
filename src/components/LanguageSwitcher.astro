@@ -1,36 +1,31 @@
 ---
-// LanguageSwitcher.astro
-
-const currentUrl = new URL(Astro.request.url);
-const currentLang = currentUrl.searchParams.get('lang') || 'en';
-
-const languages = [
-  { code: 'en', label: '🇺🇸 EN' },
-  { code: 'pt', label: '🇧🇷 PT' },
-];
+import { getLocalePaths, LOCALES } from "@/i18n"
 ---
 
-<div class="language-switcher">
-  <label for="language-select" class="sr-only">Seleccionar idioma</label>
+<div class="language-switcher px-6 lg:px-0">
   <select
     id="language-select"
     name="language"
-    value={currentLang}
     class="language-select"
     onchange="handleLanguageChange(event)"
   >
-    {languages.map((lang) => (
-      <option value={lang.code}>{lang.label}</option>
-    ))}
+    {
+      getLocalePaths(Astro.url).map(({ path, lang }) => (
+        <option
+          label={LOCALES[lang].label}
+          value={path}
+          data-lang={lang}
+          selected={lang === Astro.currentLocale}
+        />
+      ))
+    }
   </select>
 </div>
 
-<script type="text/javascript">
+<script is:inline>
   function handleLanguageChange(event) {
-    const selectedLang = event.target.value;
-    const currentUrl = new URL(window.location.href);
-    currentUrl.searchParams.set('lang', selectedLang);
-    window.location.href = currentUrl.toString();
+    localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang
+    location.href = event.target?.value
   }
 </script>
 
