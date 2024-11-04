@@ -1,11 +1,21 @@
 ---
 import Button from "../../../shared/Button.astro";
+import { useTranslations, type Lang } from "@/i18n"
+
+const t = useTranslations(Astro.currentLocale as Lang)
+
 
 export interface Props {
   className?: string;
 }
 
 const { className = "" } = Astro.props;
+
+const buttonText = t({
+  en: "Get Started",
+  pt: "Comece agora",
+});
+
 ---
 
 <div class=`mt-10 mb-5 w-full flex max-w-md mx-auto lg:mx-0 ${className}`>
@@ -44,7 +54,10 @@ const { className = "" } = Astro.props;
         variant="solid"
         className={"min-w-max  !rounded-full"}
       >
-        <span class="hidden sm:flex relative z-[5]"> Get Started </span>
+        <span class="hidden sm:flex relative z-[5]"> {t({
+          en: "Get Started",
+          pt: "Comece agora",
+        })}</span>
         <span class="flex sm:hidden relative z-[5]">
           <svg
             xmlns="http://www.w3.org/2000/svg"

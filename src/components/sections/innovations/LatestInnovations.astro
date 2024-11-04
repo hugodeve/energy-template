@@ -1,4 +1,8 @@
 ---
+import imgFacade from "./assets/inno-grid.webp";
+import imgElectrical from "./assets/inno-panel.webp";
+import imgPainting from "./assets/inno-wind.webp";
+
 import Container from "../../shared/Container.astro";
 import GradiantText from "../../shared/GradiantText.astro";
 import LazyImage from "../../shared/LazyImage.astro";
@@ -8,52 +12,105 @@ import Title2 from "../../shared/Title2.astro";
 import Title3 from "../../shared/Title3.astro";
 import { innovationsSection } from "./data.ts";
 
+import { useTranslations, type Lang } from "@/i18n"
+
+const t = useTranslations(Astro.currentLocale as Lang)
+
 export interface Props {
   className?: string;
 }
 
 const { className } = Astro.props;
+
+const innovations = [
+  {
+    title: t({
+      en: "Facade Cleaning and Restoration",
+      pt: "Limpeza e restauração de fachadas",
+    }),
+    description: t({
+      en: "Refresh and restore the appearance of your building with our professional facade cleaning services. Ensure a clean and polished look for your home or business.",
+      pt: "Refresque e restaure a aparência do seu prédio com nossos serviços profissionais de limpeza de fachadas. Garanta uma aparência limpa e polida para sua casa ou empresa.",
+    }),
+    visual: imgFacade,
+  },
+  {
+    title: t({
+      en: "Advanced Electrical Systems",
+      pt: "Sistemas Elétricos Avançados",
+    }),
+    description: t({
+      en: "Stay safe and efficient with our cutting-edge electrical installation and repair services. We use the latest tools and technologies to ensure your electrical systems are optimized for performance and safety, while adhering to the highest industry standards. Whether for residential or industrial settings, our solutions offer reliability and sustainability.",
+      pt: "Mantenha-se seguro e eficiente com nossos serviços avançados de instalação e reparo elétrico. Usamos as ferramentas e tecnologias mais recentes para garantir que seus sistemas elétricos estejam otimizados para desempenho e segurança, seguindo os mais altos padrões da indústria. Seja para ambientes residenciais ou industriais, nossas soluções oferecem confiabilidade e sustentabilidade.",
+    }),
+    visual: imgElectrical,
+  },
+  {
+    title: t({
+      en: "Next-level Painting and Finishing",
+      pt: "Pintura e Acabamento de Próximo Nível",
+    }),
+    description: t({
+      en: "Transform your spaces with our innovative painting solutions. We use eco-friendly, high-durability paints that provide a fresh look and protect your surfaces for years to come. Our advanced finishing techniques ensure flawless results, whether you're updating a home or an industrial site.",
+      pt: "Transforme seus espaços com nossas soluções inovadoras de pintura. Usamos tintas ecológicas e de alta durabilidade que proporcionam uma aparência fresca e protegem suas superfícies por muitos anos. Nossas técnicas avançadas de acabamento garantem resultados impecáveis, seja você atualizando uma casa ou um local industrial.",
+    }),
+    visual: imgPainting,
+  },
+];
+
+
 ---
 
 <section id="innovations" class=`${className}`>
   <Container
     className="mx-auto flex flex-col items-center justify-center text-center"
   >
-    <Title2>{innovationsSection.title}</Title2>
+    <Title2>{
+        t({
+          en: "Latest Innovations in Renovations and Maintenance",
+          pt: "Últimas inovações em reformas e manutenção",
+         })
+      }</Title2>
     <SubTitle2>
-      {innovationsSection.subheading1_1}<br />
-      <GradiantText>{innovationsSection.subheading1_2}</GradiantText>
+      { t({
+        en: "Discover Our Cutting-edge",
+        pt: "Descubra o que há de mais moderno",
+       })}<br />
+      <GradiantText>{ t({
+        en: " Renovation and Maintenance Solutions",
+        pt: "Soluções de Renovação e Manutenção",
+       })}</GradiantText>
     </SubTitle2>
   </Container>
   <Container>
     {
-      innovationsSection.innovations.map((solution, index: number) => {
-        const oddIndex = index % 2 === 0;
-        const flexRow = oddIndex ? "midmd:flex-row-reverse" : "midmd:flex-row";
-        const bgColor = "";
-        return (
-          <div class={`w-100 ${bgColor}  pb-32`}>
-            <div
-              class={`flex flex-col gap-10 lg:gap-12 ${flexRow} mx-auto max-w-7xl w-full`}
-            >
-              <div class="max-w-md mx-auto midmd:max-w-none lg:mx-0 lg:pr-10 xl:pr-2  flex w-11/12 midmd:w-5/12 lg:w-1/2 midmd:h-auto">
-                <div class="w-full max-h-[50vh] sm:h-96 midmd:h-full relative">
-                  <LazyImage
-                    src={solution.visual}
-                    alt="banner image"
-                    width="500"
-                    class="rounded-3xl object-cover h-full "
-                  />
-                </div>
-              </div>
-              <div class="max-w-md mx-auto w-11/12 flex-1 flex midmd:w-7/12 lg:w-1/2 flex-col">
-                <Title3>{solution.title}</Title3>
-                <Paragraph className="mt-3 ">{solution.description}</Paragraph>
+      innovations.map((solution, index) => {
+      const oddIndex = index % 2 === 0;
+      const flexRow = oddIndex ? "midmd:flex-row-reverse" : "midmd:flex-row";
+      const bgColor = "";
+      return (
+        <div class={`w-100 ${bgColor} pb-32`}>
+          <div
+            class={`flex flex-col gap-10 lg:gap-12 ${flexRow} mx-auto max-w-7xl w-full`}
+          >
+            <div class="max-w-md mx-auto midmd:max-w-none lg:mx-0 lg:pr-10 xl:pr-2 flex w-11/12 midmd:w-5/12 lg:w-1/2 midmd:h-auto">
+              <div class="w-full max-h-[50vh] sm:h-96 midmd:h-full relative">
+                <LazyImage
+                  src={solution.visual}
+                  alt="banner image"
+                  width="500"
+                  class="rounded-3xl object-cover h-full"
+                />
               </div>
             </div>
+            <div class="max-w-md mx-auto w-11/12 flex-1 flex midmd:w-7/12 lg:w-1/2 flex-col">
+              <Title3>{solution.title}</Title3>
+              <Paragraph className="mt-3">{solution.description}</Paragraph>
+            </div>
           </div>
-        );
-      })
-    }
+        </div>
+      );
+    })
+  };
   </Container>
 </section>

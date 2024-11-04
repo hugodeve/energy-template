@@ -6,42 +6,100 @@ import Paragraph from "@/components/shared/Paragraph.astro";
 import SubTitle2 from "@/components/shared/SubTitle2.astro";
 import Title2 from "@/components/shared/Title2.astro";
 import Title3 from "@/components/shared/Title3.astro";
+import aboutUsImage1 from "./assets/about-us-image1.webp"; // Imagen para "Segurança de Obra"
+import aboutUsImage2 from "./assets/about-us-image2.webp"; // Imagen para "Referência"
+import aboutUsImage3 from "./assets/about-us-image3.webp"; // Imagen para "Do início ao Fim"
+import aboutUsIntroImage from "./assets/about-us-intro.webp"; // Imagen para la sección introductoria (opcional)
 import { aboutUsSection } from "./data.ts";
+import { useTranslations, type Lang } from "@/i18n"
+
+const t = useTranslations(Astro.currentLocale as Lang)
 
 export interface Props {
   className?: string;
 }
 
 const { className } = Astro.props;
+
+const intro = {
+  headline: t({
+    en: 'Why We Are "Resolve"?',
+    pt: 'Por que Somos "Resolve"?',
+  }),
+  description: t({
+    en:
+      "The activities of Resolve Administration and Execution of Services began in 2018 when we formed a strategic alliance with a prominent company in the field of Electronic Security focused on residential and commercial condominiums in Curitiba/PR. Since then, we have dedicated ourselves to managing projects that meet each client's objectives of quality, time, and costs, aiming at the appreciation of their assets.\n\nWe operate with constructions and renovations in the architectural, structural, and installation fields.\n\n24-hour emergency maintenance on call.",
+    pt:
+      "As atividades da Resolve Administração e Execução de Serviços tiveram início em 2018, quando firmamos uma aliança estratégica com empresa de atuação destacada no ramo de Segurança Eletrônica voltada para condomínios residenciais e comerciais em Curitiba/PR. Desde então, nos dedicamos ao gerenciamento de obras que atendam aos objetivos de qualidade, prazo e custos de cada cliente, com vistas à valorização do seu patrimônio.\n\nAtuamos com construções e reformas nos campos arquitetônico, estrutural, instalações.\n\nPlantão para manutenções emergenciais 24 horas.",
+  }),
+  image: aboutUsIntroImage,
+};
+
+const sections = [
+  {
+    headline: t({
+      en: "Work Safety",
+      pt: "Segurança de Obra",
+    }),
+    description: t({
+      en:
+        "More safety for your project and your pocket. Our services are insured by AIG.",
+      pt:
+        "Mais Segurança para sua obra e para seu bolso. Nossos serviços são assegurados pela AIG.",
+    }),
+    image: aboutUsImage1,
+  },
+  {
+    headline: t({
+      en: "Reference",
+      pt: "Referência",
+    }),
+    description: t({
+      en:
+        "Quality, safety, and comfort. With 5 years in the market, we have become specialists in the sector.",
+      pt:
+        "Qualidade, segurança e conforto. Com 5 anos no mercado, nos tornamos especialistas no setor.",
+    }),
+    image: aboutUsImage2,
+  },
+  {
+    headline: t({
+      en: "From Start to Finish",
+      pt: "Do início ao Fim",
+    }),
+    description: t({
+      en:
+        "We carry out the project and execute the work from the foundation to the delivery of the keys.",
+      pt:
+        "Realizamos o projeto e executamos a obra desde a fundação até a entrega das chaves na mão.",
+    }),
+    image: aboutUsImage3,
+  },
+];
+
+
 ---
 
 <section id="about-us" class={`relative ${className}`}>
   <!-- Sección de título principal -->
   <Container className="mx-auto flex flex-col items-center justify-center text-center px-4">
-    <Title2>{aboutUsSection.title}</Title2>
-    {aboutUsSection.subheading1 && (
-      <SubTitle2>
-        {aboutUsSection.subheading1}
-        {aboutUsSection.subheading2 && (
-          <>
-            <br />
-            <GradiantText>{aboutUsSection.subheading2}</GradiantText>
-          </>
-        )}
-      </SubTitle2>
-    )}
+    <Title2>{t({
+      en: "Por que Somos 'Resolve'?",
+      pt: "Why Are We 'Resolve'?",
+     })}</Title2>
+    
   </Container>
   <!-- Sección introductoria -->
   <Container className="mt-12">
     <div class="w-full pb-16">
       <div class="flex flex-col md:flex-row items-center md:items-start gap-10 lg:gap-12 mx-auto max-w-7xl w-full">
         <!-- Imagen introductoria (opcional) -->
-        {aboutUsSection.intro.image && (
+        {intro.image && (
           <div class="w-full md:w-1/2 flex justify-center md:justify-end">
             <div class="w-full max-w-md">
               <LazyImage
-                src={aboutUsSection.intro.image}
-                alt={aboutUsSection.intro.headline}
+                src={intro.image}
+                alt={intro.headline}
                 class="rounded-3xl object-cover w-full h-auto"
               />
             </div>
@@ -49,9 +107,9 @@ const { className } = Astro.props;
         )}
         <!-- Contenido de texto introductorio -->
         <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left px-4">
-          <Title3>{aboutUsSection.intro.headline}</Title3>
+          <Title3>{intro.headline}</Title3>
           <Paragraph className="mt-3 whitespace-pre-line">
-            {aboutUsSection.intro.description}
+            {intro.description}
           </Paragraph>
         </div>
       </div>
@@ -62,7 +120,7 @@ const { className } = Astro.props;
   <br>
 
  <!-- Secciones con imágenes y texto alternados -->
- {aboutUsSection.sections.map((section, index) => {
+{sections.map((section, index) => {
   const isEven = index % 2 === 0;
   const flexDirection = isEven ? "md:flex-row" : "md:flex-row-reverse";
   return (
@@ -91,5 +149,4 @@ const { className } = Astro.props;
     </Container>
   );
 })}
-
 </section>

@@ -1,4 +1,8 @@
 ---
+import svg1 from "./assets/green-1.svg?raw";
+import svg2 from "./assets/green-2.svg?raw";
+import svg3 from "./assets/green-3.svg?raw";
+import svg4 from "./assets/green-4.svg?raw";
 import Container from "../../shared/Container.astro";
 import GradiantText from "../../shared/GradiantText.astro";
 import SubTitle2 from "../../shared/SubTitle2.astro";
@@ -6,27 +10,75 @@ import Title2 from "../../shared/Title2.astro";
 import EmailForm from "./components/EmailForm.astro";
 import InvolvementCard from "./components/InvolvementCard.astro";
 import { getInvolvedSection } from "./data.ts";
+import { useTranslations, type Lang } from "@/i18n"
+
+const t = useTranslations(Astro.currentLocale as Lang)
 
 export interface Props {
   className?: string;
 }
 const { className } = Astro.props;
+
+const initiatives = [
+  {
+    title: t({
+      en: "Construction Safety",
+      pt: "Segurança na Construção",
+    }),
+    description: t({
+      en: "More security for your work and your pocket. Our services are guaranteed by AIG.",
+      pt: "Mais segurança para seu trabalho e seu bolso. Nossos serviços são garantidos pela AIG.",
+    }),
+    visual: svg2,
+  },
+  {
+    title: t({
+      en: "Reference",
+      pt: "Referência",
+    }),
+    description: t({
+      en: "Quality, safety and comfort. With 5 years in the market, we have become experts in the sector.",
+      pt: "Qualidade, segurança e conforto. Com 5 anos no mercado, nos tornamos especialistas no setor.",
+    }),
+    visual: svg4,
+  },
+  {
+    title: t({
+      en: "From Start to Finish",
+      pt: "Do Início ao Fim",
+    }),
+    description: t({
+      en: "We carry out the project and execute the work from the foundation to the delivery of the keys in hand.",
+      pt: "Realizamos o projeto e executamos a obra desde a fundação até a entrega das chaves na mão.",
+    }),
+    visual: svg3,
+  },
+];
 ---
 
 <section id="cta" class=`${className}`>
   <Container
     className="mx-auto flex flex-col items-center justify-center text-center"
   >
-    <Title2>{getInvolvedSection.title}</Title2>
+    <Title2>{t({
+      en: "Get Involved",
+      pt: "Envolva-se",
+    })}</Title2>
     <SubTitle2>
-      <GradiantText>{getInvolvedSection.subheading1_1}</GradiantText>
-      {getInvolvedSection.subheading1_2}
+      <GradiantText>{t({
+        en: "Join Us",
+        pt: "Junte-se a nós",
+      })}</GradiantText>
+      {t({
+        en: "in Building a Sustainable Future",
+        pt: "na construção de um futuro sustentável",
+      })}
     </SubTitle2>
   </Container>
   <Container className="space-y-10 md:sapce-y-12">
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {
-        getInvolvedSection.initiatives.map((initiative) => {
+        initiatives.map((initiative) => {
           return (
             <InvolvementCard
               title={initiative.title}
