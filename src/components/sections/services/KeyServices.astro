@@ -1,9 +1,18 @@
 ---
+import img1 from "@/components/sections/services/assets/solar3.webp";
+import img2 from "@/components/sections/services/assets/wind.webp";
+import img3 from "@/components/sections/services/assets/hydro.webp";
+import img4 from "@/components/sections/services/assets/storage.webp";
+import img5 from "@/components/sections/services/assets/smart-grid.webp";
+import img6 from "@/components/sections/services/assets/green.webp";
 import Container from "../../shared/Container.astro";
 import Title2 from "../../shared/Title2.astro";
 import ServiceCard from "./components/ServiceCard.astro";
 import ServiceCopyTextCard from "./components/ServiceCopyTextCard.astro";
 import { servicesSectionData } from "./data.ts";
+import { useTranslations, type Lang } from "@/i18n"
+
+const t = useTranslations(Astro.currentLocale as Lang)
 
 export interface Props {
   className?: string;
@@ -14,46 +23,104 @@ const { className } = Astro.props;
 
 <section id="services" class={`${className}`}>
   <Container size="wide">
-    <Title2>{servicesSectionData.title}</Title2>
+    <Title2>
+      {
+        t({
+          en: "Our Home and Industrial Renovation Solutions",
+          pt: "Nossas soluções para renovação residencial e industrial",
+        })
+        }
+    </Title2>
   </Container>
   <Container size="wide">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-6">
       <!-- Tarjeta de texto (ServiceCopyTextCard) -->
       <ServiceCopyTextCard
         className="col-span-1 md:col-span-2 flex flex-col"
-        subheading={servicesSectionData.subheading}
+        subheading={
+          {
+            text1_1: t({
+              en: "Experience Excellence in Home and Industrial Renovations - ",
+              pt: "Experiência de Excelência em Renovações Domésticas e Industriais -",
+            }),
+            text1_2: t({
+              en: "Embrace Quality, Embrace Transformation.",
+              pt: "Abrace a qualidade, abrace a transformação.",
+            }), 
+            text2: t({
+              en: "We're here to Enhance Your Living and Working Spaces with Top-notch Renovation Services, Paving the Way for a More Functional and Aesthetic Future.",
+              pt: "Estamos aqui para melhorar seus espaços de vida e trabalho com serviços de renovação de alto nível, abrindo caminho para um futuro mais funcional e estético.",
+            }),
+          }
+        }
       />
       <!-- Tarjetas de servicio -->
       <ServiceCard
-        title={servicesSectionData.services[0].title}
-        description={servicesSectionData.services[0].briefDescription}
-        visual={servicesSectionData.services[0].visual}
+        title={ t({
+          en: "Facade Cleaning and Restoration",
+          pt: "Limpeza e restauração de fachadas",
+        })}
+        description={ t({
+          en: "Refresh and restore the appearance of your building with our professional facade cleaning services. Ensure a clean and polished look for your home or business.",
+          pt: "Refresque e restaure a aparência do seu prédio com nossos serviços profissionais de limpeza de fachadas. Garanta uma aparência limpa e polida para sua casa ou empresa.",
+        })}
+        visual={ img1 }
       />
       <ServiceCard
-        title={servicesSectionData.services[1].title}
-        description={servicesSectionData.services[1].briefDescription}
-        visual={servicesSectionData.services[1].visual}
+        title={ t({
+          en: "Electrical Installations and Repairs",
+          pt: "Instalações e Reparos Elétricos",
+        })}
+        description={ t({
+          en: "Ensure safe and efficient electrical systems. Our expert electricians handle everything from new installations to repairs, ensuring compliance with safety standards.",
+          pt: "Garanta sistemas elétricos seguros e eficientes. Nossos eletricistas especialistas cuidam de tudo, desde novas instalações até reparos, garantindo conformidade com os padrões de segurança.",
+        })}
+        visual={ img2 }
       />
       <ServiceCard
-        title={servicesSectionData.services[2].title}
-        description={servicesSectionData.services[2].briefDescription}
-        visual={servicesSectionData.services[2].visual}
+        title={ t({
+          en: "Painting and Finishing",
+          pt: "Pintura e Acabamento",
+        })}
+        description={ t({
+          en: "Give your home or office a fresh look with our professional painting services. We use high-quality paints to deliver a flawless and durable finish.",
+          pt: "Dê à sua casa ou escritório um visual novo com nossos serviços profissionais de pintura. Usamos tintas de alta qualidade para entregar um acabamento impecável e durável.",
+        })}
+        visual={ img3 }
       />
       <ServiceCard
-        title={servicesSectionData.services[3].title}
-        description={servicesSectionData.services[3].briefDescription}
-        visual={servicesSectionData.services[3].visual}
+        title={ t({
+          en: "Grounding and Electrical Earthing",
+          pt: "Aterramento e aterramento elétrico.",
+        })}
+        description={ t({
+          en: "Protect your home and business from electrical hazards. Our grounding services ensure safety by preventing electrical shocks and surges.",
+          pt: "Proteja sua casa e empresa de riscos elétricos. Nossos serviços de aterramento garantem a segurança ao evitar choques e surtos elétricos.",
+        })}
+        visual={ img4 }
+        />
+      <ServiceCard
+        title={ t({
+          en: "Plumbing and Pipe Maintenance",
+          pt: "Manutenção de encanamento e tubulação",
+        })}
+        description={ t({
+          en: "Maintain a seamless water flow in your building. Our plumbing experts offer installation, repair, and maintenance services for homes and industries.",
+          pt: "Mantenha um fluxo de água contínuo em seu prédio. Nossos especialistas em encanamento oferecem serviços de instalação, reparo e manutenção para residências e indústrias.",
+        })}
+        visual={ img5 }
       />
       <ServiceCard
-        title={servicesSectionData.services[4].title}
-        description={servicesSectionData.services[4].briefDescription}
-        visual={servicesSectionData.services[4].visual}
+        title={ t({
+          en: "Roofing and Waterproofing",
+          pt: "Cobertura e Impermeabilização",
+        })}
+        description={ t({
+          en: "Protect your building from the elements with our roofing and waterproofing solutions. Ensure long-lasting durability and prevent leaks.",
+          pt: "Proteja seu prédio dos elementos com nossas soluções de cobertura e impermeabilização. Garanta durabilidade de longa duração e evite vazamentos.",
+        })}
+        visual={ img6 }
       />
-      <ServiceCard
-        title={servicesSectionData.services[5].title}
-        description={servicesSectionData.services[5].briefDescription}
-        visual={servicesSectionData.services[5].visual}
-      />
-    </div>
+    </div>    
   </Container>
 </section>

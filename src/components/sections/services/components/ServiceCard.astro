@@ -9,6 +9,8 @@ export interface Props {
   title: string;
   description: string;
   visual: ImageMetadata;
+  callToAction?: string;
+  buttonText?: string;
 }
 
 const { title, description, visual } = Astro.props;

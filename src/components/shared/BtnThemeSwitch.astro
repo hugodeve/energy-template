@@ -1,51 +1,51 @@
 ---
 export interface Props {
-  className?: string;
-  variant: "primary" | "secondary" | "cta";
+  className?: string
+  variant: "primary" | "secondary" | "cta"
 }
 
-const { className, variant } = Astro.props;
+const { className, variant } = Astro.props
 
 const getThemeStyle = (variant: "primary" | "secondary" | "cta") => {
   if (variant === "primary") {
-    return "bg-transparent border-primary hover:border-primary-800 hover:bg-primary-100 dark:hover:bg-primary-900";
+    return "bg-transparent border-primary hover:border-primary-800 hover:bg-primary-100 dark:hover:bg-primary-900"
   }
   if (variant === "secondary") {
-    return "bg-transparent border-secondary hover:border-secondary-800";
+    return "bg-transparent border-secondary hover:border-secondary-800"
   }
   if (variant === "cta") {
-    return "bg-transparent border-cta hover:border-cta-800";
+    return "bg-transparent border-cta hover:border-cta-800"
   }
-  return "";
-};
+  return ""
+}
 
 const getTextColor = (variant: "primary" | "secondary" | "cta") => {
   if (variant === "primary") {
-    return "text-accent dark:text-accent-light";
+    return "text-accent dark:text-accent-light"
   }
   if (variant === "secondary") {
-    return "text-secondary dark:text-secondary-light";
+    return "text-secondary dark:text-secondary-light"
   }
   if (variant === "cta") {
-    return "text-cta dark:text-cta-light";
+    return "text-cta dark:text-cta-light"
   }
-  return "";
-};
+  return ""
+}
 
 const base =
-  "outline-none flex relative text-heading-2 rounded-full p-2 lg:p-3 border";
-const animation = "duration-300 ease-linear";
+  "outline-none flex relative text-heading-2 rounded-full p-2 lg:p-3 border"
+const animation = "duration-300 ease-linear"
 ---
 
 <button
   data-switch-theme
   class={`
-  ${base} 
-  ${animation}
-  ${getTextColor(variant)}
-  ${getThemeStyle(variant)}
-  hover:after:opacity-100 hover:after:scale-[2.5]
-  ${className}
+    ${base} 
+    ${animation}
+    ${getTextColor(variant)}
+    ${getThemeStyle(variant)}
+    hover:after:opacity-100 hover:after:scale-[2.5]
+    ${className}
   `}
 >
   <svg

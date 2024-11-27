@@ -1,0 +1,18 @@
+---
+import HeroAbout from "@/components/sections/hero/HeroAbout.astro"
+import LatestInnovationsAbout from "@/components/sections/innovations/LatestInnovationsAbout.astro"
+import Layout from "@/layouts/Layout.astro"
+import { LOCALES, type Lang } from "@/i18n"
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }))
+---
+
+<Layout title="Welcome to the Agency template ">
+  <main class="flex flex-col gap-y-20 md:gap-y-40 overflow-hidden px-4 md:px-8">
+    <HeroAbout />
+    <LatestInnovationsAbout />
+  </main>
+</Layout>

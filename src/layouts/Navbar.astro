@@ -1,59 +1,79 @@
 ---
-// Importa los componentes y las utilidades necesarias
-import Container from "../components/shared/Container.astro";
-import Navitem from "../components/shared/Navitem.astro";
-import BtnLink from "../components/shared/BtnLink.astro";
-import BtnThemeSwitch from "../components/shared/BtnThemeSwitch.astro";
-import LanguageSwitcher from "../components/LanguageSwitcher.astro";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+// import Container from "@/components/shared/Container.astro"
+import Navitem from "@/components/shared/Navitem.astro"
+// import BtnLink from "@/components/shared/BtnLink.astro"
+import BtnThemeSwitch from "@/components/shared/BtnThemeSwitch.astro"
+import LanguageSwitcher from "@/components/LanguageSwitcher.astro"
+import { LOCALES, useTranslations, type Lang } from "@/i18n"
 
-// Obtén la URL y el idioma actual
-const url = new URL(Astro.request.url);
-const locale = url.searchParams.get('lang') || 'en';
-const lang = getLangFromUrl(url); // Usa la función para obtener el idioma
+const baseUrl = import.meta.env.BASE_URL
+const locale = Astro.currentLocale as Lang
+const t = useTranslations(Astro.currentLocale as Lang)
 
-// Obtén las traducciones para el idioma actual
-const t = useTranslations(lang);
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }))
 
-// Definir elementos de navegación utilizando las traducciones
 const navItems = [
-  { href: "/newsite", text: t('nav.home') },
-  { href: "/newsite/about", text: t('nav.about') },
-  { href: "/newsite#services", text: t('nav.services') },
-  { href: "/newsite#innovations", text: t('nav.innovations') },
-  { href: "/newsite#testimonials", text: t('nav.testimonials') },
-  { href: "/newsite#environment", text: t('nav.environment') },
-];
+  { href: `${baseUrl}/${locale}/`, text: t({ en: "Home", pt: "Início" }) },
+  {
+    href: `${baseUrl}/${locale}/about`,
+    text: t({ en: "About", pt: "Sobre nós" }),
+  },
+  {
+    href: `${baseUrl}/${locale}/#services`,
+    text: t({ en: "Services", pt: "Serviços" }),
+  },
+  {
+    href: `${baseUrl}/${locale}/#innovations`,
+    text: t({ en: "Innovations", pt: "Inovações" }),
+  },
+  {
+    href: `${baseUrl}/${locale}/#testimonials`,
+    text: t({ en: "Testimonials", pt: "Depoimentos" }),
+  },
+  {
+    href: `${baseUrl}/${locale}/#environment`,
+    text: t({ en: "Environment", pt: "Meio Ambiente" }),
+  },
+]
 ---
 
-<header class="absolute inset-x-0 top-0 z-50 py-6 px-6 lg:bg-primary-500 lg:dark:bg-primary-800 lg:text-white">
+<header
+  class="absolute inset-x-0 top-0 z-50 py-6 px-6 lg:bg-primary-500 lg:dark:bg-primary-500 lg:text-white"
+>
   <nav class="w-full flex justify-between gap-6 relative">
-    <!-- Logo -->
     <div class="min-w-max inline-flex relative">
-      <a href="/energy-template" class="relative flex items-center gap-3">
+      <a href="/" class="relative flex items-center gap-3">
         <div class="relative h-7 overflow-hidden flex rounded-xl">
           <h3>RESOLVE</h3>
         </div>
       </a>
     </div>
 
-    <!-- Navbar -->
+    <div
+      data-nav-overlay
+      aria-hidden="true"
+      class="fixed hidden inset-0 lg:!hidden bg-box-bg bg-opacity-50 backdrop-filter backdrop-blur-xl"
+    >
+    </div>
     <div
       data-navbar
-      class="flex h-0 overflow-hidden lg:!h-auto lg:scale-y-100 duration-300 ease-linear flex-col gap-y-6 gap-x-4 lg:flex-row w-full lg:justify-between lg:items-center absolute lg:relative top-full lg:top-0 bg-primary-500 dark:bg-primary-800 text-white border-x border-box-border lg:border-x-0"
+      class="flex h-0 overflow-hidden lg:!h-auto lg:scale-y-100 duration-300 ease-linear flex-col gap-4 lg:flex-row w-full lg:justify-between lg:items-center absolute lg:relative top-full lg:top-0 bg-primary-500 dark:bg-primary-500 max-sm:bg-white max-sm:dark:bg-black text-white border-x border-box-border lg:border-x-0"
     >
       <ul
         class="border-t border-box-border lg:border-t-0 px-6 lg:px-0 pt-6 lg:pt-0 flex flex-col lg:flex-row gap-y-4 gap-x-3 text-lg text-white w-full lg:justify-end lg:items-center"
       >
-        {navItems.map((item) => (
-          <Navitem key={item.href} href={item.href} text={item.text} />
-        ))}
+        {
+          navItems.map((item) => (
+            <Navitem key={item.href} href={item.href} text={item.text} />
+          ))
+        }
       </ul>
-      <!-- Selector de idioma -->
       <LanguageSwitcher />
     </div>
 
-    <!-- Theme Switch y Toggle Button -->
     <div class="min-w-max flex items-center gap-x-3">
       <BtnThemeSwitch variant="primary" />
 
@@ -62,9 +82,15 @@ const navItems = [
         data-open-nav="false"
         class="lg:hidden lg:invisible outline-none w-7 h-auto flex flex-col relative"
       >
-        <span class="w-6 h-0.5 rounded-full transition-all duration-300 ease-linear bg-black dark:bg-white"></span>
-        <span class="w-6 origin-center mt-1 h-0.5 rounded-full transition-all duration-300 ease-linear bg-black dark:bg-white"></span>
-        <span class="w-6 mt-1 h-0.5 rounded-full transition-all duration-300 ease-linear bg-black dark:bg-white"></span>
+        <span
+          class="w-6 h-0.5 rounded-full transition-all duration-300 ease-linear bg-black dark:bg-white"
+        ></span>
+        <span
+          class="w-6 origin-center mt-1 h-0.5 rounded-full transition-all duration-300 ease-linear bg-black dark:bg-white"
+        ></span>
+        <span
+          class="w-6 mt-1 h-0.5 rounded-full transition-all duration-300 ease-linear bg-black dark:bg-white"
+        ></span>
         <span class="sr-only">Toggle Navigation</span>
       </button>
     </div>

@@ -4,23 +4,87 @@ import GradiantText from "../../shared/GradiantText.astro";
 import SubTitle2 from "../../shared/SubTitle2.astro";
 import Title2 from "../../shared/Title2.astro";
 import Testimonial from "./components/Testimonial.astro";
-import { testimonialsSection } from "./data.ts";
+//import { testimonialsSection } from "./data.ts";
+import img1 from "./assets/person1.png";
+import img2 from "./assets/person2.png";
+import img3 from "./assets/person3.png";
+
+import { useTranslations, type Lang } from "@/i18n"
+
+const t = useTranslations(Astro.currentLocale as Lang)
+
 
 export interface Props {
   className?: string;
 }
 
 const { className } = Astro.props;
+
+const testimonialsSection = {
+  testimonials: [
+    {
+      name: "Emily Johnson",
+      visual: img1,
+      occupation: t({
+        en: "Homeowner",
+        pt: "Proprietária",
+      }),
+      quote: t({
+        en:
+          "Choosing Resolve for our home renovation was the best decision we made. The transformation is incredible, and the team was professional and attentive to our needs.",
+        pt:
+          "Escolher a Resolve para a reforma da nossa casa foi a melhor decisão que tomamos. A transformação é incrível, e a equipe foi profissional e atenciosa às nossas necessidades.",
+      }),
+    },
+    {
+      name: "Carlos Rodriguez",
+      visual: img2,
+      occupation: t({
+        en: "Business Owner",
+        pt: "Empresário",
+      }),
+      quote: t({
+        en:
+          "As a business owner, I needed minimal disruption during our office renovation. Resolve delivered on time and exceeded our expectations with their quality workmanship.",
+        pt:
+          "Como empresário, precisava de mínima interrupção durante a reforma do nosso escritório. A Resolve entregou no prazo e superou nossas expectativas com sua qualidade de trabalho.",
+      }),
+    },
+    {
+      name: "Sophie Chen",
+      visual: img3,
+      occupation: t({
+        en: "Environmental Advocate",
+        pt: "Advogada Ambiental",
+      }),
+      quote: t({
+        en:
+          "Managing multiple properties is challenging, but Resolve made our building renovations seamless and efficient. Their attention to detail is commendable.",
+        pt:
+          "Gerenciar várias propriedades é desafiador, mas a Resolve tornou nossas reformas prediais simples e eficientes. A atenção aos detalhes deles é digna de elogio.",
+      }),
+    },
+  ],
+};
 ---
 
 <section id="testimonials" class=`${className}`>
   <Container
     className="mx-auto flex flex-col items-center justify-center text-center"
   >
-    <Title2>{testimonialsSection.title}</Title2>
+    <Title2>{t({
+      en: "What Our Customers Say",
+      pt: "O que nossos clientes dizem",
+     })}</Title2>
     <SubTitle2>
-      <GradiantText> {testimonialsSection.subheading1_1}</GradiantText><br />
-      {testimonialsSection.subheading1_2}
+      <GradiantText> {t({
+        en: "Hear from Those",
+        pt: "Ouça aqueles",
+       })}</GradiantText><br />
+      {t({
+        en: " Who Have Trusted Resolve with Their Renovation Projects",
+        pt: "Que confiaram na Resolve para seus projetos de renovação",
+       })}
     </SubTitle2>
   </Container>
   <Container className="flex flex-col items-center">
